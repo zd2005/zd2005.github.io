@@ -1,0 +1,84 @@
+body{
+    background-image: url('Dance Dancing GIF.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1 {
+    color:black;
+    text-align: center;
+}
+p {
+    color: black;
+    text-align: left;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+button{
+    border: black;
+    color: purple;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgb(0, 236, 161);
+
+}
+
+button:hover{
+    background-color: rgb(3, 108, 74);
+    color: rgb(82, 1, 82);
+}
+
+/* Begining of switch*/
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider{
+    position:absolute;
+    cursor: pointer;
+    -webkit-transition: .4s;
+    transition: .4s;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+}
+
+
+
+.slider:before{
+    position:absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+
+input:checked + .slider{
+    background-color: black;
+}
+input:focus + .slider {
+    box-shadow: 0 0 1px black;
+}
+
+
+input:checked + .slider:before{
+    -webkit-transform: translate(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+/*End of switch*/
