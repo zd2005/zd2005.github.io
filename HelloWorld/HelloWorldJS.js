@@ -5,7 +5,7 @@ function displaySwag() {
         document.getElementById('Header1').innerHTML = "Swag";
         switchNum = switchNum + 1;
     }else {
-        document.getElementById('Header1').innerHTML = "Hello World";
+        document.getElementById('Header1').innerHTML = "Hello, World!";
         switchNum = 0;
     }
 }
