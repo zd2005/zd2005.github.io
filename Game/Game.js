@@ -66,7 +66,7 @@ function component(width, height, color, x, y){
         this.x += this.speedX
         this.y += this.speedY
     }
-
+    //defining the collision detection
     this.crashObs = function(otherObj){
         let myLeft = this.x
         let myRight = this.x + (this.width)
@@ -85,7 +85,7 @@ function component(width, height, color, x, y){
 }
 
 
-
+//in charge of grabing the number out of the input box and setting it as the moveSpeed variable
 function updateSpeed(){
     moveSpeed = document.getElementById("speed").valueAsNumber
 }
@@ -93,11 +93,14 @@ function updateSpeed(){
 
 //gets called every frame about 50 times a second
 function updateGameSpace(){
+    //clears the canvas
     gameSpace.clear()
 
+    //sets the character speed to 0 while everything is getting updated
     gameChar.speedX = 0
     gameChar.speedY = 0
 
+    //iterates through the gameObstacle array to check if a collision has been detected
     for(i = 0; i < gameObstacle.length; i++){
         if(gameChar.crashObs(gameObstacle[i])){
             resetLevel()
@@ -108,8 +111,12 @@ function updateGameSpace(){
     if(gameSpace.keys && gameSpace.keys["d"]){gameChar.speedX = moveSpeed}
     if(gameSpace.keys && gameSpace.keys["w"]){gameChar.speedY = -moveSpeed}
     if(gameSpace.keys && gameSpace.keys["s"]){gameChar.speedY = moveSpeed}
+
+    //keeping these for now incase I want to reimpliment arrowkeyMovement
     //if(gameSpace.keys && gameSpace.keys["ArrowLeft"]){gameChar.speedX = -moveSpeed}
     //if(gameSpace.keys && gameSpace.keys["ArrowRight"]){gameChar.speedX = moveSpeed}
+
+    //changed the original arrowkey movement in favor of up and down arrows adjusting move speed
     if(gameSpace.keys && gameSpace.keys["ArrowUp"]){moveSpeed+=0.25}
     if(gameSpace.keys && gameSpace.keys["ArrowDown"]){moveSpeed-=0.25}
     //sets and checks min and max speed
@@ -118,7 +125,7 @@ function updateGameSpace(){
 
     //moves the peice
     gameChar.move()
-    //calls to the update function inside the gameChar object
+    //calls to the update function inside the gameChar object and each gameObstacle Object
     for(i = 0; i < gameObstacle.length; i++){
         gameObstacle[i].update()
     }
@@ -126,6 +133,7 @@ function updateGameSpace(){
     document.getElementById("currentSpeed").innerHTML = "your current speed is " + moveSpeed.toFixed(2) + "<br> Deaths : " + hahaLoser
 }
 
+//moves the player back to starting position and increments death counter
 function resetLevel(){
     gameChar.x = 20
     gameChar.y = 20
