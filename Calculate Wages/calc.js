@@ -8,5 +8,5 @@ function calculate(){
     let otHours = 0
     
     if(hoursWorked > nHours){otHours = hoursWorked - nHours; hoursWorked = nHours}
-    document.getElementById("dailyWage").innerHTML = (hourlyWage * nHours) + (ot * otHours)
+    document.getElementById("dailyWage").innerHTML = ((hourlyWage * nHours) + (ot * otHours)).toFixed(2) " Dollars"
 }
